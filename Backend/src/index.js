@@ -1,15 +1,5 @@
-//Arquivo principal da aplicação
-const express = require('express');
-const routes = require('./routes'); //importando as variávis do arquivo routes.js
-const cors = require('cors');
-const app = express();
-
-app.use(cors()); // Se for colocado em produção, podemo utilizar o origin
-app.use(express.json()) // Informar para nossa aplicação que iremos usar json no corpo
-app.use(routes);
-
 /*
- * Rota / Recurso
+ * Rota / Recurso 
  */
 
 /**
@@ -43,8 +33,22 @@ app.use(routes);
    * Driver: SELECT * FROM users    
    * Query Builder: table('users').select('*').where()
    */
-  
-app.listen(3333);
+
+
+//O index.js é o arquivo principal da aplicação.
+//importação dos Módulos e Routes.
+const express = require('express');
+const routes = require('./routes'); //importando as variávis do arquivo routes.js
+const cors = require('cors');
+const app = express();
+
+app.use(cors()); // Se for colocado em produção, podemo utilizar o origin
+app.use(express.json()) // Informar para nossa aplicação que iremos usar json no corpo
+app.use(routes); //Informando o uso das Routes na aplicação.
+
+// A aplicação está na porta 3333. Portão padrão de instalação.
+// A aplicação está rodando em localhost.
+app.listen(3333); 
 
 
 
