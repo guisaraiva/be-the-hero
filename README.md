@@ -1,1 +1,1 @@
-# be-the-hero
+# Aplicação Be The Hero (Aplicação Web + App)
