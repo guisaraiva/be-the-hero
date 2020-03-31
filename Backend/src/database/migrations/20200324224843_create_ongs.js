@@ -1,4 +1,4 @@
-
+//Função responsável pela criação da tabela de Ongs.
 exports.up = function(knex) {
     return knex.schema.createTable('ongs', function(table)
     {
@@ -10,8 +10,7 @@ exports.up = function(knex) {
         table.string('uf',2).notNullable();
     });
 };
-
+//Função para exportar e realizar a criação da tabela no banco de dados SQLite.
 exports.down = function(knex) {
     return knex.schema.dropTable('ongs');
 };
- 
