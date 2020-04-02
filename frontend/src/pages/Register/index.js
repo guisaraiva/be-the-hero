@@ -1,20 +1,19 @@
+//Importação de arquivos e pacotes
 import React, {useState} from 'react';
 import logonimage  from '../../assets/logo.svg';
 import {FiArrowLeft} from 'react-icons/fi';
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
-
 import './styles.css';
 
-
+//Function para Registro
 export default function Register(){
-
+    //Declaração de variáveis
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
-
     const history = useHistory();
 
     async function handleRegister(e){
@@ -26,15 +25,11 @@ export default function Register(){
             whatsapp,
             city,
             uf,
-
-
         };
         
         try {
             const response = await api.post('ongs', data);
-
             alert( `Seu ID de acesso: ${response.data.id}`);
-
             history.push('/');
         } 
         catch (err){
@@ -56,7 +51,6 @@ export default function Register(){
                     Já tenho cadastro
                     </Link>
                 </section>
-
                 <form onSubmit={handleRegister}>
                     <input 
                         placeholder="Nome da ONG"
@@ -87,14 +81,9 @@ export default function Register(){
                             onChange={e=> setUf(e.target.value)}
                         />
                     </div>
-
-                <button className="button">Cadastrar</button>                    
-
+                    <button className="button">Cadastrar</button>                    
                 </form>
             </div>
-
-
         </div>
     );
-
 }

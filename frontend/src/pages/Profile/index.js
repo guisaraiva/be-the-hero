@@ -1,3 +1,4 @@
+//Importação de arquivos e pacotes
 import React, {useState, useEffect, useReducer} from 'react';
 import logonimage  from '../../assets/logo.svg';
 import {Link, useHistory} from 'react-router-dom';
@@ -6,12 +7,12 @@ import api from '../../services/api';
 import './styles.css';
 
 
+//Function profile
 export default function Profile() {
-   
+   //Declaração de variáveis
     const [incidents, setIncidents] = useState([]);
     const ongId = localStorage.getItem('ongId');
     const ongName = localStorage.getItem('ongName');
-
     const history = useHistory();
 
     useEffect(() =>{
@@ -31,20 +32,16 @@ export default function Profile() {
                 headers:{
                     Authorization: ongId,
                 }
-
             });
-
             setIncidents(incidents.filter(incident => incident.id != id));
-        } catch (error) {
+        } 
+        catch (error) {
             alert('Erro ao deletar o caso, tente novamente.')
         }
-
-
     }
 
     function handleLogout(){
         localStorage.clear();
-
         history.push('/');
     }
 
@@ -56,6 +53,7 @@ export default function Profile() {
                 <span>Bem Vinda, {ongName} !</span>
 
                 <Link className = "button" to="/incidents/new">Cadastrar novo caso</Link>
+                
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041" />
                 </button>
